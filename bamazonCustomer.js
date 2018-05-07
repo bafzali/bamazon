@@ -23,11 +23,6 @@ function customerStorefront() {
       type: 'input',
       message: 'Please enter the ID # of the product you would like to buy. Or enter "help" for a list of items.',
     },
-    {
-      name: 'quantity',
-      type: 'input',
-      message: 'How many would you like to purchase?', // insert qty available if able
-    },
   ]).then(function(answer) {
     if (answer.productID === 'help') {
       displayProducts();
@@ -36,17 +31,25 @@ function customerStorefront() {
       connection.query('SELECT * FROM products WHERE ?', { item_id: answer.productID }, function(err, res) {
         if (err) throw err;
         // console.log(res);
-        if (res[0].stock_quantity >= answer.quantity) {
-          let newQuantity = res[0].stock_quantity - answer.quantity;
-          // console.log(newQuantity);
-          updateStockQuantity(newQuantity, answer.productID);
-          const totalCost = res[0].price * answer.quantity;
-          console.log(`Thank you for ordering ${answer.quantity} ${res[0].product_name}(s).\nYour total cost is $${totalCost}`);
-          connection.end();
-        } else {
-          console.log(`Sorry, insufficient quantity!\n${res[0].stock_quantity} available`);
-          customerStorefront();
-        }
+        inquirer.prompt([
+          {
+            name: 'quantity',
+            type: 'input',
+            message: 'How many would you like to purchase?', // insert qty available if able
+          },
+        ]).then(function(input) {
+          if (res[0].stock_quantity >= input.quantity) {
+            let newQuantity = res[0].stock_quantity - input.quantity;
+            // console.log(newQuantity);
+            updateStockQuantity(newQuantity, answer.productID);
+            const totalCost = parseFloat(res[0].price * input.quantity).toFixed(2);
+            console.log(`Thank you for ordering ${input.quantity} ${res[0].product_name}(s).\nYour total cost is $${totalCost}`);
+            connection.end();
+          } else {
+            console.log(`Sorry, insufficient quantity!\n${res[0].stock_quantity} available`);
+            customerStorefront();
+          }
+        });
       });
     }
   });
@@ -54,13 +57,14 @@ function customerStorefront() {
 
 function displayProducts() {
   const query = 'SELECT * FROM products';
-  let products = [];
+  // let products = [];
   connection.query(query, function(err, res) {
     if (err) throw err;
     for (let i = 0; i < res.length; i++) {
-      products.push(`${res[i].product_name}, ID: ${res[i].item_id}, price: $${res[i].price}`);
+      // products.push(`ID: ${res[i].item_id}, ${res[i].product_name}, price: $${res[i].price}`);
+      console.log(`ID: ${res[i].item_id}, ${res[i].product_name}, price: $${res[i].price}`);
+      // console.log(products);
     }
-    console.log(products);
   });
 }
 
