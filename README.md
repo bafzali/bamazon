@@ -16,7 +16,7 @@ If the customer enters 'help', the program lists all item information and re-pro
 ![Customer view 4](screenshots/05-customer-help.JPG "If the customer enters 'help', the program lists all item information and re-prompts for the item number.")
 
 Below you can see that the inventory updates when a customer makes a purchase.
-[Inventory changes with customer purchase](cust-purchase-inv-change.JPG "")
+![Inventory changes with customer purchase](cust-purchase-inv-change.JPG "")
 
 # How the Manage Node App Works
 When the bamazonManager.js app is run, a menu appears that gives the user the following options:
