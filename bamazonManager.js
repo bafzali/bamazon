@@ -56,6 +56,7 @@ function displayProducts() {
       products.push(`ID: ${res[i].item_id}, ${res[i].product_name}, price: $${res[i].price}, Qty. ${res[i].stock_quantity}`);
     }
     console.log(products);
+    managerPortal();
   });
 }
 
@@ -66,6 +67,15 @@ function reorderReport() {
     for (let i = 0; i < res.length; i++) {
       console.log(`ID: ${res[i].item_id}, ${res[i].product_name}, Qty. ${res[i].stock_quantity}`);
     }
+    managerPortal();
+  });
+}
+
+function updateStockQuantity(newQuantity, itemToUpdate) {
+  const update = 'UPDATE products SET stock_quantity = ? WHERE item_id = ?';
+  connection.query(update, [newQuantity, itemToUpdate], function(err, res) {
+    if (err) throw err;
+    // console.log(res);
   });
 }
 
@@ -94,7 +104,7 @@ function addToInventory() {
         },
       ],
       function(err, res) {
-        if (err) return err;
+        if (err) throw err;
         let newQuantity = res[0].stock_quantity + answer.quantity;
         // console.log(newQuantity);
         updateStockQuantity(newQuantity, answer.productID);

@@ -14,3 +14,27 @@ If there is insufficient stock the program tells the customer and shows them how
 
 If the customer enters 'help', the program lists all item information and re-prompts for the item number.
 ![Customer view 4](screenshots/05-customer-help.JPG "If the customer enters 'help', the program lists all item information and re-prompts for the item number.")
+
+# How the Manage Node App Works
+When the bamazonManager.js app is run, a menu appears that gives the user the following options:
+
+![Manager Root Menu](screenshots/rootmenu.JPG "")
+
+If the user selects "View Products for Sale", a list of the products is displayed and the root menu is displayed again. 
+
+![View Products for Sale Menu Item](screenshots/inventory.JPG "")
+
+If the user selects "View Low Inventory", a list of products with 5 or less are displayed and the root menu is displayed again.
+
+![View Low Inventory Menu Item](screenshots/low-inventory.JPG "")
+
+If the user selects "Add to Inventory", they are asked for the id of the item to update and the quantity to update. An error is returned on this one, so I am still trouble shooting it.
+
+
+If the user selects "Add New Product", they are asked for the item name, the item department, the item quantity and the price. Below is a screenshot of the inventory before adding an item, and a screenshot of the prompts to add an item and the new inventory list.
+
+![Add New Product, inventory list before product is added](screenshots/item-list-1.JPG "")
+![Add New Product prompts and inventory list after product is added](screenshots/item-list-2.JPG "")
+
+If the user selects "Exit Program" the program ends.
+![Exit Program Menu Item](screenshots/exit.JPG "")
