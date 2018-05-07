@@ -1,7 +1,7 @@
-## bamazon
+# bamazon
 Basic node applications to track inventory of imaginary store using mySQL
 
-# How the Customer Node App Works
+## How the Customer Node App Works
 When the program is run, the customer is prompted to enter the item number they would like to purchase or enter help to see a list of products.
 ![Customer view 1](screenshots/01-customer.JPG "When the program is run, the customer is prompted to enter the item number they would like to purchase or enter help to see a list of products.")
 
@@ -18,7 +18,7 @@ If the customer enters 'help', the program lists all item information and re-pro
 Below you can see that the inventory updates when a customer makes a purchase.
 ![Inventory changes with customer purchase](screenshots/cust-purchase-inv-change.JPG "")
 
-# How the Manage Node App Works
+## How the Manager Node App Works
 When the bamazonManager.js app is run, a menu appears that gives the user the following options:
 
 ![Manager Root Menu](screenshots/rootmenu.JPG "")
