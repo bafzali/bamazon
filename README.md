@@ -13,4 +13,4 @@ If there is insufficient stock the program tells the customer and shows them how
 ![Customer view 3](screenshots/03-customer.JPG "If there is insufficient stock the program tells the customer and shows them how many are available. The program is then restarted so they can change their order.")
 
 If the customer enters 'help', the program lists all item information and re-prompts for the item number.
-![Customer view 4](screenshots/05-customer.JPG "If the customer enters 'help', the program lists all item information and re-prompts for the item number.")
+![Customer view 4](screenshots/05-customer-help.JPG "If the customer enters 'help', the program lists all item information and re-prompts for the item number.")
